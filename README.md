@@ -428,6 +428,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                     
                     if not barang_ditemukan:
                         print(f'Barang dengan id {pilih_id_barang} tidak ditemukan.')
+                        break
 
                     checker = input('Ingin membeli barang lain? (yes/no): ')
                     if checker == 'no':
@@ -487,8 +488,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
             else:
                 print('\nInput tidak valid!')
                 continue
-    - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
-    - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
+    - Pada fitur belanja barang, `while` loop digunakan untuk melakukan input `pilih_id_barang` dan `jumlah_barang` secara terus menerus hingga user selesai memilih barang untuk dibeli 
 
 10. **Exit Program:**
 
