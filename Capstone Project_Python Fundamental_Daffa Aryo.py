@@ -253,7 +253,8 @@ while running :
             pilihan_menu_4 = input('''
                 \t Menu Hapus Barang "TOSERBA PASTI ADA"
                 1. Menghapus Barang
-                2. Kembali ke Menu Utama
+                2. Menghapus seluruh barang Toko
+                3. Kembali ke Menu Utama
                 
                 Masukan angka Menu Hapus Barang:
                 ''')
@@ -286,11 +287,20 @@ while running :
                     print(f'Barang dengan id {pilih_barang_delete} tidak ditemukan!')
 
             elif pilihan_menu_4 == '2':
+                clear_toko = input('Apakah anda yakin untuk menghapus seluruh data di Toko? (yes/no)')
+                if clear_toko == 'yes':
+                    print('Seluruh barang di toko berhasil di hapus!')
+                    barang_toserba.clear()
+                else:
+                    print('Barang tidak di hapus dari Toko!')
+                    continue
+            
+            elif pilihan_menu_4 == '3':
                 break
             else:
                 print('\nInput tidak valid!')
                 continue
-
+                 
         elif pilih_menu == '5':
             pilihan_menu_5 = input('''
                 \t Menu Belanja "TOSERBA PASTI ADA"
