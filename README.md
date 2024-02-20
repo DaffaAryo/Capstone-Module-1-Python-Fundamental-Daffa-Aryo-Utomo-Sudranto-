@@ -22,26 +22,73 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
 
 ### Penjelasan Blok Kode:
 1. **Variabel `barang_toserba` dan `keranjang`:**
+   barang_toserba = [
+     {  'id' : 'atk01', 
+        'nama' : 'Pulpen Hitam',
+        'stock' : 25,
+        'harga' : 7000,
+        'total penjualan' : 200
+    },
+    {
+        'id' : 'atk02',
+        'nama' : 'Pensil 2B',
+        'stock' : 18,
+        'harga' : 4000,
+        'total penjualan' : 92
+    },
+    {
+        'id' : 'atk03',
+        'nama' : 'Buku Tulis',
+        'stock' : 30,
+        'harga' : 10000,
+        'total penjualan' : 131
+    },
+    {   'id' : 'snk01', 
+        'nama' : 'Keripik',
+        'stock' : 100,
+        'harga' : 11000,
+        'total penjualan' : 88
+    },
+    {
+        'id' : 'snk02',
+        'nama' : 'Biskuit',
+        'stock' : 88,
+        'harga' : 8000,
+        'total penjualan' : 123
+    },
+    {
+        'id' : 'snk03',
+        'nama' : 'Susu Vanilla',
+        'stock' : 53,
+        'harga' : 17000,
+        'total penjualan' : 222
+    },
+    ]
+
+
+keranjang = []
+
+   
     - Variabel `barang_toserba` merupakan list dictionary untuk menyimpan daftar barang yang tersedia di toko dengan rincian seperti ID, nama, stok, harga, dan total penjualan.
     - Variabel `keranjang` digunakan untuk menyimpan barang yang dipilih oleh pengguna saat berbelanja.
     
-2. **Menu Utama:**
+3. **Menu Utama:**
     - Menu utama aplikasi yang menampilkan pilihan fitur dari program.
     - 'while' loop digunakan untuk menjaga program tetap berjalan hingga pengguna memilih untuk keluar.
 
-3. **Menu Read Data:**
+4. **Menu Read Data:**
    - Menu yang memberikan pilihan untuk melihat seluruh data barang di toko dan mencari data barang berdasarkan id barang.
 5.  **Create Data:**
-6.  - Menu untuk membuat data barang baru ke dalam list dictionary toko
+    - Menu untuk membuat data barang baru ke dalam list dictionary toko
     - Data baru yang dimasukan mencakup id, nama, stock, harga, dan total penjualan.
     - Data baru yang dimasukan tidak boleh terdapat di toko.
-7.  **Update Data:**
+6.  **Update Data:**
     - Menu untuk melakuan perubahan pada data barang yang sudah ada di dalam list dictionary toko.
     - perubahan data barang mencakup nama barang, stock barang, harga barang, dan total penjualan barang.
     - perubahan hanya bisa dilakukan pada data barang yang sudah tersimpan di dalam list dictionary toko.
-9.  **Hapus Data:**
+7.  **Hapus Data:**
     - Menu untuk menghapus data barang yang ada di toko
-11.  Belanja:**
+8.  Belanja:**
     - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
     - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
 
