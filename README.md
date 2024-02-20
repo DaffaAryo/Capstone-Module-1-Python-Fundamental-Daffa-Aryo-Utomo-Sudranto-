@@ -229,19 +229,23 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 Masukan angka Menu Update Barang:
                 ''')
             if pilihan_menu_3 == '1':
+                if not barang_toserba:
+                    print('Tidak ada barang di Toko!')
+                    break
+    
                 print('\t\t\t\t List Barang "TOSERBA PASTI ADA"\n')
                 print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                 for barang in barang_toserba:
                     print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
                 
                 pilih_barang_update = input('Masukan id barang yang ingin di Update: ')
-                barang_ada = False
+                barang_ada3 = False
                 for barang in barang_toserba:
                     if pilih_barang_update == barang['id']:
                         print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                         print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
                         copy_barang = barang.copy()
-                        barang_ada = True
+                        barang_ada3 = True
 
                         confirm_update = input('Apakah ingin melakukan update? (yes/no)')
                         if confirm_update == 'yes':
@@ -303,7 +307,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                         else:
                             print('Update dibatalkan!')
 
-                if not barang_ada:
+                if not barang_ada3:
                     print(f'Barang dengan id {pilih_barang_update} tidak ditemukan.')
                     continue
             
@@ -312,11 +316,17 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
             else:
                 print('\nInput tidak valid!')
                 continue
-    - Menu untuk melakuan perubahan pada data barang yang sudah ada di dalam list dictionary toko.
-    - perubahan data barang mencakup nama barang, stock barang, harga barang, dan total penjualan barang.
-    - perubahan hanya bisa dilakukan pada data barang yang sudah tersimpan di dalam list dictionary toko.
+    - Data yang ingin di update, perlu diperiksa keberadaan datanya menggunakan variable boolean `barang_ada3`.
+    - Barang yang ingin diupdate dicari dengan melakukan input data `id` barang yang terdapat di `barang_toserba`.
+    - variable `copy_barang = barang.copy()` berfungsi untuk menyimpan salinan dari data `barang` yang telah dipilih user.
+    - Setelah memilih barang, user dapat memilih salah satu data yang akan di update. Data yang dapat dipilih dianataranya nama, stock, harga, dan total penjualan.
+    - Perubahan data akan terinput ke `barang_toserba`.
+    - Setelah melakukan perubahan data, user akan dimunculkan pesan konfirmasi untuk melakukan perubahan data atau tidak.
+    - Jika user melakukan input 'no' atau dengan input lainnya, maka data tidak tersimpan.
+    - Data yang sebelumnya sudah tersimpan, akan diubah kembali dengan data sebelum user melakukan input perubahan data dengan varible `copy_barang`. Data `copy_barang` akan mengubah data `barang` yang sudah di input dengan looping `for item in barang_toserba:` dengan conditional statement `if item['id'] == barang['id']:` dimana varible `item` dapat mengubah data pada `barang_toserba` yang sudah di update sehingga program tidak melakukan update data.
+    - Jika user melakukan input 'yes', update data berhasil dilakukan pada `barang_toserba`.
 
-6.  **Menu Delete Data:**
+7.  **Menu Delete Data:**
 
            elif (pilih_menu == '4'):
                 pilihan_menu_4 = input('''
@@ -370,7 +380,13 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 print('\nInput tidak valid!')
                 continue
 
-    - Menu untuk menghapus data barang yang ada di toko
+    - Delete barang pada `barang_toserba` dilakukan dengan memilih `id` barang.
+    - Setelah memilih `barang` yang ingin dihapus, akan muncul pesan konfirmasi untuk melakukan delete data.
+    - Jika user melakukan input 'yes', maka data `barang` pada `barang_toserba` akan dihapus. Delete data dilakukan dengan method `barang_toserba.remove(barang)`, dimana method ini dapat menghapus `barang` yang telah di input user dari `barang_toserba`.
+    -  Jika user melakukan input 'no' atau input lainnya, maka program tidak akan melakukan delete.
+    -  Selain menghapus `barang` dari `barang_toserba`, terdapat pilihan untuk menghapus seluruh data pada `barang_toserba` dengan menggunakan `barang_toserba.clear()`.
+    -  Jika `barang_toserba` tidak memiliki data, maka fitur read data, update data, dan belanja barang tidak dapat digunakan. Create data dapat dilakukan untuk memasukan data baru pada `barang_toserba`
+      
 8.  **Menu Belanja Barang:**
 
              elif pilih_menu == '5':
@@ -382,6 +398,10 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 Masukan angka Menu Update Barang:
                 ''')
             if pilihan_menu_5 == '1':
+                if not barang_toserba:
+                    print('Tidak ada barang di Toko!')
+                    break
+    
                 print('\t\t\t\t List Barang "TOSERBA PASTI ADA"\n')
                 print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                 for barang in barang_toserba:
@@ -470,7 +490,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
     - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
     - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
 
-9. **Exit Program:**
+10. **Exit Program:**
 
         elif pilih_menu == '6':
             print('Terima Kasih, sampai jumpa lagi! :D')
