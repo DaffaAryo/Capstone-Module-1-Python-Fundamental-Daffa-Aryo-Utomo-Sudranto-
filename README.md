@@ -98,9 +98,9 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
 
 
     - Menu utama aplikasi yang menampilkan pilihan fitur dari program.
-    - varible `running` sebagai nilai boolean True
-    - `while` loop digunakan untuk menjaga program tetap berjalan dan kembali ke menu utama hingga pengguna memilih untuk menghentikan program.
-    - `pilih_menu` digunakan untuk melakukan input user yang berfungsi untuk memilih angka fitur yang terdapat pada menu utama.
+    - variabel `running` sebagai nilai boolean True
+    - `while` loop digunakan untuk menjaga program tetap berjalan dan kembali ke menu utama setelah menggunakan fitur program hingga pengguna memilih untuk menghentikan program.
+    - `pilih_menu` digunakan untuk melakukan input user yang berfungsi untuk memilih angka menu fitur yang terdapat pada menu utama.
 
 3. **Menu Read Data:**
 
@@ -144,19 +144,19 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 print('\nInput tidak valid!')
                 continue
 
-   - Didalam `while` loop menu utama, terdapat juga `while` loop untuk setiap conditional statement `if` ketika user memilih angka dari fitur yang terdapat di menu utama. Loop tersebut berfungsi untuk kembali ke menu fitur yang dipilih sehingga tidak kembali ke menu utama.
+   - Didalam `while` loop menu utama, terdapat juga `while` loop untuk setiap conditional statement `if` ketika user memilih angka dari menu fitur yang terdapat di menu utama. Loop tersebut berfungsi untuk kembali ke menu fitur yang dipilih sehingga tidak kembali ke menu utama.
    - `pilih_menu_1` adalah user input yang diisi dengan angka dari menu fitur read data.
-   - `if not barang_toserba` merupakan conditional statement untuk memeriksa apakah ada data list dictionary di `barang_toserba`, jika data kosong maka conditional statement ini akan di proses program.
+   - `if not barang_toserba` berfungsi untuk memeriksa apakah ada data list dictionary di `barang_toserba`, jika data kosong maka conditional statement ini akan di proses program.
    - `for barang in barang_toserba` looping yang berfungsi untuk melakukan print seluruh data yang ada di list dictionary `barang_toserba`, jika seluruh data sudah diperiksa, maka looping akan berhenti.
-   - `if cari_barang == barang['id']:` conditional statement untuk mencari barang berdasarkan `id` barang pada `barang_toserba` dimana `cari_barang` merupakan input str untuk diisi `id` barang.
-   - `barang_ada1 = False` merupakan variable dengan value boolean untuk memeriksa apakah barang yang dicari terdapat pada `barang_toserba`. Jika barang terdapat pada list dictionary, maka nilainya akan menjadi `True`
+   - `if cari_barang == barang['id']:` berfungsi untuk mencari barang berdasarkan `id` barang pada `barang_toserba` dimana `cari_barang` merupakan input str untuk diisi `id` barang.
+   - `barang_ada1 = False` merupakan variabel dengan value boolean untuk memeriksa apakah barang yang dicari terdapat pada `barang_toserba`. Jika barang terdapat pada list dictionary, maka nilainya akan menjadi `True`
    - `if not barang_ada1` adalah conditional statement yang di proses ketika `id` barang yang dicari tidak dapat ditemukan.
    - Tiap menu fitur memiliki pilihan untuk kembali ke menu utama dengan melakukan `break` pada menu fitur yang sedang berjalan sehingga dapat kembali ke menu utama.
    - Jika input angka di menu fitur tidak sesuai, hasil dari input tersebut adalah tetap berada di menu fitur karena terdapat `continue` ketika conditional statement tidak terpenuhi.
      
 4.  **Menu Create Data:**
 
-         #menu create data2
+         #menu create data
             elif pilih_menu == '2':
             pilihan_menu_2 = input('''
                 \t Menu Menambahkan Barang "TOSERBA PASTI ADA"\n
@@ -210,7 +210,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 print('\nInput tidak valid!')
                 continue
     - Dalam melalukan penambahan barang, terdapat pemeriksaan di input `id_barang` dan `nama_barang` menggunakan conditional statement `if id_barang == barang['id'] or nama_barang.capitalize() == barang['nama']:`. Code tersebut digunakan untuk memerikasa apakah `id` dan `nama` barang yang baru di input sudah terdapat di `barang_toserba`. Jika input `id` dan `nama` sudah ada di `barang_toserba`, maka penambahan barang tidak dapat dilanjutkan.
-    - Jika data `id` dan `nama` barang belum tersedia di `barang_toserba`, maka dapat melanjutkan untuk melakukan penambahan data barang baru lain nya yang mencakup `stcok`, `harga` , dan `total penjualan`.
+    - Jika data `id` dan `nama` barang belum tersedia di `barang_toserba`, maka dapat melanjutkan untuk melakukan penambahan data barang baru lainnya yang mencakup `stcok`, `harga` , dan `total penjualan`.
     - Penambahan data baru akan di proses menggunakan method `barang_toserba.append`. Dengan method tersebut, maka input data barang baru dapat ditambahkan ke list dictionary `barang_toserba` di bagian paling bawah.
     - Setelah memasukan input, akan dilanjutkan dengan input konfirmasi untuk menyimpan data baru atau tidak.
     - Jika konfirmasi disetujui, maka program akan melakukan print untuk menampilkan semua data `barang_toserba` dan data input barang baru.
@@ -322,13 +322,14 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
     - Setelah memilih barang, user dapat memilih salah satu data yang akan di update. Data yang dapat dipilih dianataranya nama, stock, harga, dan total penjualan.
     - Perubahan data akan terinput ke `barang_toserba`.
     - Setelah melakukan perubahan data, user akan dimunculkan pesan konfirmasi untuk melakukan perubahan data atau tidak.
-    - Jika user melakukan input 'no' atau dengan input lainnya, maka data tidak tersimpan.
-    - Data yang sebelumnya sudah tersimpan, akan diubah kembali dengan data sebelum user melakukan input perubahan data dengan varible `copy_barang`. Data `copy_barang` akan mengubah data `barang` yang sudah di input dengan looping `for item in barang_toserba:` dengan conditional statement `if item['id'] == barang['id']:` dimana varible `item` dapat mengubah data pada `barang_toserba` yang sudah di update sehingga program tidak melakukan update data.
+    - Jika user memasukan input 'no' atau dengan input lainnya, maka data tidak tersimpan.
+    - Data yang sebelumnya sudah tersimpan, akan diubah kembali dengan data sebelum user melakukan input perubahan data dengan variabel `copy_barang`. Data `copy_barang` akan mengubah data `barang` yang sudah di input dengan looping `for item in barang_toserba:` dengan conditional statement `if item['id'] == barang['id']:` dimana varible `item` dapat mengubah data pada `barang_toserba` yang sudah di update sehingga program tidak melakukan update data.
     - Jika user melakukan input 'yes', update data berhasil dilakukan pada `barang_toserba`.
 
 7.  **Menu Delete Data:**
-
-           elif (pilih_menu == '4'):
+            
+           #menu delete data
+            elif (pilih_menu == '4'):
                 pilihan_menu_4 = input('''
                 \t Menu Hapus Barang "TOSERBA PASTI ADA"
                 1. Menghapus Barang
@@ -382,15 +383,16 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
 
     - Delete barang pada `barang_toserba` dilakukan dengan memilih `id` barang.
     - Setelah memilih `barang` yang ingin dihapus, akan muncul pesan konfirmasi untuk melakukan delete data.
-    - Jika user melakukan input 'yes', maka data `barang` pada `barang_toserba` akan dihapus. Delete data dilakukan dengan method `barang_toserba.remove(barang)`, dimana method ini dapat menghapus `barang` yang telah di input user dari `barang_toserba`.
+    - Jika user melakukan input 'yes', maka data `barang` pada `barang_toserba` akan dihapus. Delete data dilakukan dengan method `barang_toserba.remove(barang)`, dimana method ini dapat menghapus `barang` berdasarkan input user dari `barang_toserba`.
     -  Jika user melakukan input 'no' atau input lainnya, maka program tidak akan melakukan delete.
     -  Selain menghapus `barang` dari `barang_toserba`, terdapat pilihan untuk menghapus seluruh data pada `barang_toserba` dengan menggunakan `barang_toserba.clear()`.
     -  Jika `barang_toserba` tidak memiliki data, maka fitur read data, update data, dan belanja barang tidak dapat digunakan. Create data dapat dilakukan untuk memasukan data baru pada `barang_toserba`
       
-8.  **Menu Belanja Barang:**
+9.  **Menu Belanja Barang:**
 
+             #menu belanja barang
              elif pilih_menu == '5':
-            pilihan_menu_5 = input('''
+                pilihan_menu_5 = input('''
                 \t Menu Belanja "TOSERBA PASTI ADA"
                 1. Belanja Barang
                 2. Kembali ke Menu Utama
@@ -482,7 +484,6 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                         keranjang.clear()
                         break
 
-
             elif pilihan_menu_5 == '2':
                 break
             else:
@@ -492,16 +493,16 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
     - `if not barang_ada5` berfungsi jika input pada `pilih_id_barang` tidak terdapat data pada `barang_toserba`, maka user perlu melakukan input kembali dengan `id` yang terdapat pada `barang_toserba`.
     - `if jumlah_barang > barang['stock']` berfungsi jika input pada `jumlah_barang` lebih besar dari data `stock` pada `baranf_toserba`, maka user perlu melakukan input kembali dengan nilai `stock` yang sesuai dengan `barang_toserba`
     - jika syarata `id` dan `stock` terpenuhi, user perlu melakukan konfirmasi untuk menambah pilihan belanja kembali atau tidak.
-    - Jika user ingin menambah barang untuk di belanja, maka user akan kembali untuk mengisi inpu `id` dan `stock` kembali.
+    - Jika user ingin menambah barang untuk di belanja, maka user akan kembali untuk mengisi input `id` dan `stock` kembali.
     - jika user tidak ingin menambah barang, maka user akan meneruskan proses transaksi belanja dan akan ditampilkan list barang yang akan dibelanjakan dan total biaya yang harus dibayarkan.
-    - seluruh `barang` yang telah di input oleh user akan ditambahkan pada variable `keranjang` dengan menggunakan method `keranjang.append`
+    - seluruh `barang` yang telah di input oleh user akan ditambahkan pada variabel `keranjang` dengan menggunakan method `keranjang.append`
     - `while` loop kembali digunakan untuk melakukan transaksi hingga user memutuskan untuk melakukan pembayaran hingga lunas atau tidak.
     - `if jumlah_uang == total_harga:` berfungsi jika jumlah uang user sama dengan total harga yang harus dibayarkan. Jika transaksi berhasil data yang terdapat pada `keranjang` akan dihapus.
     - `elif jumlah_uang > total_harga:` berfungsi jika jumlah uang user lebih besar dari total harga yang harus dibayarkan. Jika transaksi berhasil, program akan menampilkan jumlah kembalian untuk user.
     - ` elif jumlah_uang < total_harga:` berfungsi jika jumlah uang user lebih kecil dari total harga yang harus dibayarkan. User akan ditampilkan pesan konfirmasi untuk melakukan pembayaran kembali. Jika user memasukan input `yes`, maka user dapat melakukan pembayaran kembali. Jika user memasukan input `no`, maka transaksi gagal dan data `karanjang` dikosongkan.
     - untuk setiap transaksi yang berhasil dilakukan, program akan melakukan updata data `item` pada `barang_toserba` menggunakan `for` loop. Data `item` yang akan di update adalah `stock` yang akan berkurang dan `total penjualan` yang akan bertambah berdasarkan `barang[jumlah]` yang diinput oleh user.
 
-10. **Exit Program:**
+11. **Exit Program:**
 
         elif pilih_menu == '6':
             print('Terima Kasih, sampai jumpa lagi! :D')
@@ -511,7 +512,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
         else:
             print('\nInput tidak valid')
             break
-    - exit program dilakukan dengan mengubah value dari variable `running` dari `True` menjadi `False` sehingga `while` loop tidak dalam kondisi `True` dan program akan berhenti.
+    - exit program dilakukan dengan mengubah value dari variabel `running` dari `True` menjadi `False` sehingga `while` loop tidak dalam kondisi `True` dan program akan berhenti.
     - Untuk input pada menu utama, selain input 1 - 6, akan diidentifikasikan sebagai input yang tidak valid sehingga user perlu memasukan input yang sesuai.
 
 Dengan demikian, program ini cocok untuk digunakan oleh pengguna yang ingin mempelajari konsep dasar pemrograman Python serta manajemen data sederhana.
