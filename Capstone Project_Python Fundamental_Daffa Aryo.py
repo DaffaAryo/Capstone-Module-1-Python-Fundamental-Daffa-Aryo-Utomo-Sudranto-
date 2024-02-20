@@ -83,16 +83,16 @@ while running :
                         print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
                 
             elif pilihan_menu_1 == '2':
-                cari_barang = input('Masukan id barang yang ingin dicari:') #masih salah
-                barang_ditemukan = False
+                cari_barang = input('Masukan id barang yang ingin dicari:')
+                barang_ada1 = False
                 for barang in barang_toserba:
                     if cari_barang == barang['id']:
                         print('barang ditemukan!')
                         print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                         print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
-                        barang_ditemukan = True
+                        barang_ada1 = True
                         continue
-                if not barang_ditemukan:
+                if not barang_ada1:
                     print(f'Barang dengan id {cari_barang} tidak ditemukan!')
                     continue
 
@@ -117,14 +117,14 @@ while running :
                 id_barang = input('Masukan id barang yang ditambahkan: ')
                 nama_barang = input('Masukan nama barang yang ditambahkan: ')
 
-                barang_sudah_ada = False
+                barang_ada2 = False
                 for barang in barang_toserba:
                     if id_barang == barang['id'] or nama_barang.capitalize() == barang['nama']:
                         print('Barang sudah ada di toko!')
-                        barang_sudah_ada = True
+                        barang_ada2 = True
                         continue
                 
-                if not barang_sudah_ada:
+                if not barang_ada2:
                     stock_barang = int(input('Masukan stock barang yang ditambahkan: '))
                     harga_barang = int(input('Masukan harga barang yang ditambahkan: '))
                     total_penjualan_barang = int(input('Masukan total penjualan barang yang ditambahkan: '))
@@ -165,19 +165,23 @@ while running :
                 Masukan angka Menu Update Barang:
                 ''')
             if pilihan_menu_3 == '1':
+                if not barang_toserba:
+                    print('Tidak ada barang di Toko!')
+                    break
+
                 print('\t\t\t\t List Barang "TOSERBA PASTI ADA"\n')
                 print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                 for barang in barang_toserba:
                     print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
                 
                 pilih_barang_update = input('Masukan id barang yang ingin di Update: ')
-                barang_ada = False
+                barang_ada3 = False
                 for barang in barang_toserba:
                     if pilih_barang_update == barang['id']:
                         print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                         print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
                         copy_barang = barang.copy()
-                        barang_ada = True
+                        barang_ada3 = True
 
                         confirm_update = input('Apakah ingin melakukan update? (yes/no)')
                         if confirm_update == 'yes':
@@ -239,7 +243,7 @@ while running :
                         else:
                             print('Update dibatalkan!')
 
-                if not barang_ada:
+                if not barang_ada3:
                     print(f'Barang dengan id {pilih_barang_update} tidak ditemukan.')
                     continue
             
@@ -285,6 +289,7 @@ while running :
                 
                 if not barang_ada4:
                     print(f'Barang dengan id {pilih_barang_delete} tidak ditemukan!')
+                    break
 
             elif pilihan_menu_4 == '2':
                 clear_toko = input('Apakah anda yakin untuk menghapus seluruh data di Toko? (yes/no)')
@@ -300,7 +305,7 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
-                 
+
         elif pilih_menu == '5':
             pilihan_menu_5 = input('''
                 \t Menu Belanja "TOSERBA PASTI ADA"
@@ -319,11 +324,13 @@ while running :
                     pilih_id_barang = input('Masukan id barang yang ingin dibeli: ')
                     jumlah_barang = int(input('Masukan jumlah barang yang dipilih: '))
                     
-                    barang_ditemukan = False
+                    barang_ada5 = False
                     for barang in barang_toserba:
                         if pilih_id_barang == barang['id']:
                             if jumlah_barang > barang['stock']:
                                 print('Jumlah pembelian melebihi stock barang! Stock yang tersedia: {}'.format(barang['stock']))
+                                barang_ada5 = True
+                                continue
                             else:
                                 keranjang.append({
                                     'nama': barang['nama'],
@@ -331,11 +338,14 @@ while running :
                                     'harga': barang['harga']
                                 })
                                 print('Barang telah ditambahkan ke keranjang!')
-                                barang_ditemukan = True
+                                barang_ada5 = True
                             break
                     
-                    if not barang_ditemukan:
+                    if jumlah_barang > barang['stock']:
+                        continue
+                    if not barang_ada5:
                         print(f'Barang dengan id {pilih_id_barang} tidak ditemukan.')
+                        continue
 
                     checker = input('Ingin membeli barang lain? (yes/no): ')
                     if checker == 'no':
@@ -365,13 +375,12 @@ while running :
                         kembalian = jumlah_uang - total_harga
                         print('Terima kasih! Uang kembali: {}'.format(kembalian))
 
-                        # Mengurangi stok dan menambah total penjualan untuk setiap barang yang dibeli
                         for barang in keranjang:
                             for item in barang_toserba:
                                 if item['nama'] == barang['nama']:
                                     item['stock'] -= barang['jumlah']
                                     item['total penjualan'] += barang['jumlah']
-                        keranjang.clear()  # Bersihkan keranjang setelah transaksi selesai
+                        keranjang.clear() 
                         break
                     
                     elif jumlah_uang < total_harga:
