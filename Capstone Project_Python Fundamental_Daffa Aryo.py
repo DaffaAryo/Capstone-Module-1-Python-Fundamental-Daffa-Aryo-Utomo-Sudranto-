@@ -394,9 +394,3 @@ while running :
         else:
             print('\nInput tidak valid')
             break
-
-        
-
-
-
-
