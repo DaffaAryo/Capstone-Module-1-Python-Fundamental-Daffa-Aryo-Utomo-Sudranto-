@@ -390,7 +390,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
 8.  **Menu Belanja Barang:**
 
              elif pilih_menu == '5':
-                pilihan_menu_5 = input('''
+            pilihan_menu_5 = input('''
                 \t Menu Belanja "TOSERBA PASTI ADA"
                 1. Belanja Barang
                 2. Kembali ke Menu Utama
@@ -398,10 +398,6 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 Masukan angka Menu Update Barang:
                 ''')
             if pilihan_menu_5 == '1':
-                if not barang_toserba:
-                    print('Tidak ada barang di Toko!')
-                    break
-    
                 print('\t\t\t\t List Barang "TOSERBA PASTI ADA"\n')
                 print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                 for barang in barang_toserba:
@@ -411,11 +407,13 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                     pilih_id_barang = input('Masukan id barang yang ingin dibeli: ')
                     jumlah_barang = int(input('Masukan jumlah barang yang dipilih: '))
                     
-                    barang_ditemukan = False
+                    barang_ada5 = False
                     for barang in barang_toserba:
                         if pilih_id_barang == barang['id']:
                             if jumlah_barang > barang['stock']:
                                 print('Jumlah pembelian melebihi stock barang! Stock yang tersedia: {}'.format(barang['stock']))
+                                barang_ada5 = True
+                                continue
                             else:
                                 keranjang.append({
                                     'nama': barang['nama'],
@@ -423,12 +421,14 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                                     'harga': barang['harga']
                                 })
                                 print('Barang telah ditambahkan ke keranjang!')
-                                barang_ditemukan = True
+                                barang_ada5 = True
                             break
                     
-                    if not barang_ditemukan:
+                    if jumlah_barang > barang['stock']:
+                        continue
+                    if not barang_ada5:
                         print(f'Barang dengan id {pilih_id_barang} tidak ditemukan.')
-                        break
+                        continue
 
                     checker = input('Ingin membeli barang lain? (yes/no): ')
                     if checker == 'no':
@@ -451,7 +451,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                                 if item['nama'] == barang['nama']:
                                     item['stock'] -= barang['jumlah']
                                     item['total penjualan'] += barang['jumlah']
-                        keranjang.clear() 
+                        keranjang.clear()
                         break
 
                     elif jumlah_uang > total_harga:
@@ -464,7 +464,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                                 if item['nama'] == barang['nama']:
                                     item['stock'] -= barang['jumlah']
                                     item['total penjualan'] += barang['jumlah']
-                        keranjang.clear() 
+                        keranjang.clear()
                         break
                     
                     elif jumlah_uang < total_harga:
@@ -488,7 +488,8 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
             else:
                 print('\nInput tidak valid!')
                 continue
-    - Pada fitur belanja barang, `while` loop digunakan untuk melakukan input `pilih_id_barang` dan `jumlah_barang` secara terus menerus hingga user selesai memilih barang untuk dibeli 
+    - Pada fitur belanja barang, `while` loop digunakan untuk melakukan input `pilih_id_barang` dan `jumlah_barang` secara terus menerus hingga user selesai memilih barang untuk dibeli.
+    - 
 
 10. **Exit Program:**
 
