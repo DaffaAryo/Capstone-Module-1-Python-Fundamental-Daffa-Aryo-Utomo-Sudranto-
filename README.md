@@ -20,6 +20,11 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
 5. **Belanja Barang:**
     - Mengizinkan pengguna untuk memilih barang yang ingin dibeli dan melakukan transaksi pembayaran.
 
+### Fitur dari Program:
+- **Interaktif:** Program menyediakan antarmuka yang interaktif yang memungkinkan pengguna untuk dengan mudah berinteraksi dengan aplikasi melalui terminal.
+- **Manajemen Barang yang Fleksibel:** Pengguna dapat dengan mudah menambahkan, memperbarui, dan menghapus barang dari toko.
+- **Transaksi Belanja yang Mudah:** Program memungkinkan pengguna untuk melakukan transaksi belanja dengan cepat dan efisien, termasuk perhitungan total harga dan kembalian.
+
 ### Penjelasan Blok Kode:
 1. **Variabel `barang_toserba` dan `keranjang`:**
 
@@ -149,7 +154,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
    - Tiap menu fitur memiliki pilihan untuk kembali ke menu utama dengan melakukan `break` pada menu fitur yang sedang berjalan sehingga dapat kembali ke menu utama.
    - Jika input angka di menu fitur tidak sesuai, hasil dari input tersebut adalah tetap berada di menu fitur karena terdapat `continue` ketika conditional statement tidak terpenuhi.
      
-4.  **Create Data:**
+4.  **Menu Create Data:**
 
          #menu create data2
             elif pilih_menu == '2':
@@ -212,7 +217,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
     - Jika konfirmasi tidak disetujui, maka data input yang sudah masuk ke `barang_toserba` dapat dihapus menggunakan method `barang_toserba.pop()` untuk menghapus data baru yang paling bawah pada list dictionary.
     - Program juga tidak akan menyimpan data baru jika input konfirmasi tidak menggunakan input yang sesuai dari keterangan yang ada (input selain yes dan no).
 
-5.  **Update Data:**
+5.  **Menu Update Data:**
 
         #menu update data
         elif pilih_menu == '3':
@@ -310,26 +315,15 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
     - Menu untuk melakuan perubahan pada data barang yang sudah ada di dalam list dictionary toko.
     - perubahan data barang mencakup nama barang, stock barang, harga barang, dan total penjualan barang.
     - perubahan hanya bisa dilakukan pada data barang yang sudah tersimpan di dalam list dictionary toko.
-10.  **Hapus Data:**
-    - Menu untuk menghapus data barang yang ada di toko
-11.  Belanja:**
-    - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
-    - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
 
-### Fitur dari Program:
-- **Interaktif:** Program menyediakan antarmuka yang interaktif yang memungkinkan pengguna untuk dengan mudah berinteraksi dengan aplikasi melalui terminal.
-- **Manajemen Barang yang Fleksibel:** Pengguna dapat dengan mudah menambahkan, memperbarui, dan menghapus barang dari toko.
-- **Transaksi Belanja yang Mudah:** Program memungkinkan pengguna untuk melakukan transaksi belanja dengan cepat dan efisien, termasuk perhitungan total harga dan kembalian.
+6.  **Menu Delete Data:**
 
-            
-
-        
-
-        elif (pilih_menu == '4'):
-            pilihan_menu_4 = input('''
+           elif (pilih_menu == '4'):
+                pilihan_menu_4 = input('''
                 \t Menu Hapus Barang "TOSERBA PASTI ADA"
                 1. Menghapus Barang
-                2. Kembali ke Menu Utama
+                2. Menghapus seluruh barang Toko
+                3. Kembali ke Menu Utama
                 
                 Masukan angka Menu Hapus Barang:
                 ''')
@@ -362,13 +356,25 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                     print(f'Barang dengan id {pilih_barang_delete} tidak ditemukan!')
 
             elif pilihan_menu_4 == '2':
+                clear_toko = input('Apakah anda yakin untuk menghapus seluruh data di Toko? (yes/no)')
+                if clear_toko == 'yes':
+                    print('Seluruh barang di toko berhasil di hapus!')
+                    barang_toserba.clear()
+                else:
+                    print('Barang tidak di hapus dari Toko!')
+                    continue
+            
+            elif pilihan_menu_4 == '3':
                 break
             else:
                 print('\nInput tidak valid!')
                 continue
 
-        elif pilih_menu == '5':
-            pilihan_menu_5 = input('''
+    - Menu untuk menghapus data barang yang ada di toko
+8.  **Menu Belanja Barang:**
+
+             elif pilih_menu == '5':
+                pilihan_menu_5 = input('''
                 \t Menu Belanja "TOSERBA PASTI ADA"
                 1. Belanja Barang
                 2. Kembali ke Menu Utama
@@ -424,7 +430,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                                 if item['nama'] == barang['nama']:
                                     item['stock'] -= barang['jumlah']
                                     item['total penjualan'] += barang['jumlah']
-                        keranjang.clear()  # Bersihkan keranjang setelah transaksi selesai
+                        keranjang.clear() 
                         break
 
                     elif jumlah_uang > total_harga:
@@ -437,7 +443,7 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                                 if item['nama'] == barang['nama']:
                                     item['stock'] -= barang['jumlah']
                                     item['total penjualan'] += barang['jumlah']
-                        keranjang.clear()  # Bersihkan keranjang setelah transaksi selesai
+                        keranjang.clear() 
                         break
                     
                     elif jumlah_uang < total_harga:
@@ -461,6 +467,10 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
             else:
                 print('\nInput tidak valid!')
                 continue
+    - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
+    - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
+
+9. **Exit Program:**
 
         elif pilih_menu == '6':
             print('Terima Kasih, sampai jumpa lagi! :D')
@@ -470,4 +480,6 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
         else:
             print('\nInput tidak valid')
             break
+
 Dengan demikian, program ini cocok untuk digunakan oleh pengguna yang ingin mempelajari konsep dasar pemrograman Python serta manajemen data sederhana.
+Terima Kasih.
