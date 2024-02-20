@@ -22,154 +22,92 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
 
 ### Penjelasan Blok Kode:
 1. **Variabel `barang_toserba` dan `keranjang`:**
-   barang_toserba = [
-     {  'id' : 'atk01', 
-        'nama' : 'Pulpen Hitam',
-        'stock' : 25,
-        'harga' : 7000,
-        'total penjualan' : 200
-    },
-    {
-        'id' : 'atk02',
-        'nama' : 'Pensil 2B',
-        'stock' : 18,
-        'harga' : 4000,
-        'total penjualan' : 92
-    },
-    {
-        'id' : 'atk03',
-        'nama' : 'Buku Tulis',
-        'stock' : 30,
-        'harga' : 10000,
-        'total penjualan' : 131
-    },
-    {   'id' : 'snk01', 
-        'nama' : 'Keripik',
-        'stock' : 100,
-        'harga' : 11000,
-        'total penjualan' : 88
-    },
-    {
-        'id' : 'snk02',
-        'nama' : 'Biskuit',
-        'stock' : 88,
-        'harga' : 8000,
-        'total penjualan' : 123
-    },
-    {
-        'id' : 'snk03',
-        'nama' : 'Susu Vanilla',
-        'stock' : 53,
-        'harga' : 17000,
-        'total penjualan' : 222
-    },
-    ]
 
-
-keranjang = []
+           barang_toserba = [
+             {  'id' : 'atk01', 
+                'nama' : 'Pulpen Hitam',
+                'stock' : 25,
+                'harga' : 7000,
+                'total penjualan' : 200
+            },
+            {
+                'id' : 'atk02',
+                'nama' : 'Pensil 2B',
+                'stock' : 18,
+                'harga' : 4000,
+                'total penjualan' : 92
+            },
+            {
+                'id' : 'atk03',
+                'nama' : 'Buku Tulis',
+                'stock' : 30,
+                'harga' : 10000,
+                'total penjualan' : 131
+            },
+            {   'id' : 'snk01', 
+                'nama' : 'Keripik',
+                'stock' : 100,
+                'harga' : 11000,
+                'total penjualan' : 88
+            },
+            {
+                'id' : 'snk02',
+                'nama' : 'Biskuit',
+                'stock' : 88,
+                'harga' : 8000,
+                'total penjualan' : 123
+            },
+            {
+                'id' : 'snk03',
+                'nama' : 'Susu Vanilla',
+                'stock' : 53,
+                'harga' : 17000,
+                'total penjualan' : 222
+            },
+            ]
+        
+        
+        keranjang = []
 
    
     - Variabel `barang_toserba` merupakan list dictionary untuk menyimpan daftar barang yang tersedia di toko dengan rincian seperti ID, nama, stok, harga, dan total penjualan.
     - Variabel `keranjang` digunakan untuk menyimpan barang yang dipilih oleh pengguna saat berbelanja.
     
-3. **Menu Utama:**
+2. **Menu Utama:**
+   
+       #Menu Utama
+       running = True
+       while running :
+            pilih_menu = input('''
+                \t Selamat Datang di 
+                \t "TOSERBA PASTI ADA"
+                Menu Utama:
+                1. Daftar Barang
+                2. Menambah Barang
+                3. Update Barang 
+                4. Menghapus Barang
+                5. Belanja Barang
+                6. Exit Program
+                Masukkan angka Menu Utama : ''')
+   
+
+
     - Menu utama aplikasi yang menampilkan pilihan fitur dari program.
-    - 'while' loop digunakan untuk menjaga program tetap berjalan hingga pengguna memilih untuk keluar.
+    - varible `running` sebagai nilai boolean True
+    - `while` loop digunakan untuk menjaga program tetap berjalan dan kembali ke menu utama hingga pengguna memilih untuk menghentikan program.
+    - `pilih_menu` digunakan untuk melakukan input user yang berfungsi untuk memilih angka fitur yang terdapat pada menu utama.
 
-4. **Menu Read Data:**
-   - Menu yang memberikan pilihan untuk melihat seluruh data barang di toko dan mencari data barang berdasarkan id barang.
-5.  **Create Data:**
-    - Menu untuk membuat data barang baru ke dalam list dictionary toko
-    - Data baru yang dimasukan mencakup id, nama, stock, harga, dan total penjualan.
-    - Data baru yang dimasukan tidak boleh terdapat di toko.
-6.  **Update Data:**
-    - Menu untuk melakuan perubahan pada data barang yang sudah ada di dalam list dictionary toko.
-    - perubahan data barang mencakup nama barang, stock barang, harga barang, dan total penjualan barang.
-    - perubahan hanya bisa dilakukan pada data barang yang sudah tersimpan di dalam list dictionary toko.
-7.  **Hapus Data:**
-    - Menu untuk menghapus data barang yang ada di toko
-8.  Belanja:**
-    - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
-    - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
+3. **Menu Read Data:**
 
-### Fitur dari Program:
-- **Interaktif:** Program menyediakan antarmuka yang interaktif yang memungkinkan pengguna untuk dengan mudah berinteraksi dengan aplikasi melalui terminal.
-- **Manajemen Barang yang Fleksibel:** Pengguna dapat dengan mudah menambahkan, memperbarui, dan menghapus barang dari toko.
-- **Transaksi Belanja yang Mudah:** Program memungkinkan pengguna untuk melakukan transaksi belanja dengan cepat dan efisien, termasuk perhitungan total harga dan kembalian.
-
-barang_toserba = [
-     {  'id' : 'atk01', 
-        'nama' : 'Pulpen Hitam',
-        'stock' : 25,
-        'harga' : 7000,
-        'total penjualan' : 200
-    },
-    {
-        'id' : 'atk02',
-        'nama' : 'Pensil 2B',
-        'stock' : 18,
-        'harga' : 4000,
-        'total penjualan' : 92
-    },
-    {
-        'id' : 'atk03',
-        'nama' : 'Buku Tulis',
-        'stock' : 30,
-        'harga' : 10000,
-        'total penjualan' : 131
-    },
-    {   'id' : 'snk01', 
-        'nama' : 'Keripik',
-        'stock' : 100,
-        'harga' : 11000,
-        'total penjualan' : 88
-    },
-    {
-        'id' : 'snk02',
-        'nama' : 'Biskuit',
-        'stock' : 88,
-        'harga' : 8000,
-        'total penjualan' : 123
-    },
-    {
-        'id' : 'snk03',
-        'nama' : 'Susu Vanilla',
-        'stock' : 53,
-        'harga' : 17000,
-        'total penjualan' : 222
-    },
-    ]
-
-
-keranjang = []
-
-#menu utama
-running = True
-while running :
-    pilih_menu = input('''
-        \t Selamat Datang di 
-        \t "TOSERBA PASTI ADA"
-
-        Menu Utama:
-        1. Daftar Barang
-        2. Menambah Barang
-        3. Update Barang 
-        4. Menghapus Barang
-        5. Belanja Barang
-        6. Exit Program
-
-        Masukkan angka Menu Utama : ''')
-    
-    #menu read data
-    while True:
-        if pilih_menu == '1':
-            pilihan_menu_1 = input('''
-            \t Menu Daftar Barang "TOSERBA PASTI ADA"
-            1. Tampilkan Semua Barang
-            2. Mencari Barang
-            3. Kembali ke Menu Utama
-                
-        Masukan angka Menu Barang:
+        #menu read data
+        while True:
+            if pilih_menu == '1':
+                pilihan_menu_1 = input('''
+                \t Menu Daftar Barang "TOSERBA PASTI ADA"
+                1. Tampilkan Semua Barang
+                2. Mencari Barang
+                3. Kembali ke Menu Utama    
+            Masukan angka Menu Barang:
                 ''')
             if pilihan_menu_1 == '1':
                 if not barang_toserba:
@@ -182,16 +120,16 @@ while running :
                         print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
                 
             elif pilihan_menu_1 == '2':
-                cari_barang = input('Masukan id barang yang ingin dicari:') #masih salah
-                barang_ditemukan = False
+                cari_barang = input('Masukan id barang yang ingin dicari:')
+                barang_ada1 = False
                 for barang in barang_toserba:
                     if cari_barang == barang['id']:
                         print('barang ditemukan!')
                         print("id\t| Nama\t\t\t\t| Stock\t\t| Harga\t\t| Total Penjualan")
                         print('{}\t| {}\t\t\t| {}\t\t| {}\t\t| {}'.format(barang['id'],barang['nama'],barang['stock'],barang['harga'],barang['total penjualan']))
-                        barang_ditemukan = True
+                        barang_ada1 = True
                         continue
-                if not barang_ditemukan:
+                if not barang_ada1:
                     print(f'Barang dengan id {cari_barang} tidak ditemukan!')
                     continue
 
@@ -200,9 +138,21 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
-            
-            #menu create data2
-        elif pilih_menu == '2':
+
+   - Didalam `while` loop menu utama, terdapat juga `while` loop untuk setiap conditional statement `if` ketika user memilih angka dari fitur yang terdapat di menu utama. Loop tersebut berfungsi untuk kembali ke menu fitur yang dipilih sehingga tidak kembali ke menu utama.
+   - `pilih_menu_1` adalah user input yang diisi dengan angka dari menu fitur read data.
+   - `if not barang_toserba` merupakan conditional statement untuk memeriksa apakah ada data list dictionary di `barang_toserba`, jika data kosong maka conditional statement ini akan di proses program.
+   - `for barang in barang_toserba` looping yang berfungsi untuk melakukan print seluruh data yang ada di list dictionary `barang_toserba`, jika seluruh data sudah diperiksa, maka looping akan berhenti.
+   - `if cari_barang == barang['id']:` conditional statement untuk mencari barang berdasarkan `id` barang pada `barang_toserba` dimana `cari_barang` merupakan input str untuk diisi `id` barang.
+   - `barang_ada1 = False` merupakan variable dengan value boolean untuk memeriksa apakah barang yang dicari terdapat pada `barang_toserba`. Jika barang terdapat pada list dictionary, maka nilainya akan menjadi `True`
+   - `if not barang_ada1` adalah conditional statement yang di proses ketika `id` barang yang dicari tidak dapat ditemukan.
+   - Tiap menu fitur memiliki pilihan untuk kembali ke menu utama dengan melakukan `break` pada menu fitur yang sedang berjalan sehingga dapat kembali ke menu utama.
+   - Jika input angka di menu fitur tidak sesuai, hasil dari input tersebut adalah tetap berada di menu fitur karena terdapat `continue` ketika conditional statement tidak terpenuhi.
+     
+4.  **Create Data:**
+
+         #menu create data2
+            elif pilih_menu == '2':
             pilihan_menu_2 = input('''
                 \t Menu Menambahkan Barang "TOSERBA PASTI ADA"\n
                 1. Menambahkan barang
@@ -216,14 +166,14 @@ while running :
                 id_barang = input('Masukan id barang yang ditambahkan: ')
                 nama_barang = input('Masukan nama barang yang ditambahkan: ')
 
-                barang_sudah_ada = False
+                barang_ada2 = False
                 for barang in barang_toserba:
                     if id_barang == barang['id'] or nama_barang.capitalize() == barang['nama']:
                         print('Barang sudah ada di toko!')
-                        barang_sudah_ada = True
+                        barang_ada2 = True
                         continue
                 
-                if not barang_sudah_ada:
+                if not barang_ada2:
                     stock_barang = int(input('Masukan stock barang yang ditambahkan: '))
                     harga_barang = int(input('Masukan harga barang yang ditambahkan: '))
                     total_penjualan_barang = int(input('Masukan total penjualan barang yang ditambahkan: '))
@@ -254,6 +204,16 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
+    - Dalam melalukan penambahan barang, terdapat pemeriksaan di input `id_barang` dan `nama_barang` menggunakan conditional statement `if id_barang == barang['id'] or nama_barang.capitalize() == barang['nama']:`. Code tersebut digunakan untuk memerikasa apakah `id` dan `nama` barang yang baru di input sudah terdapat di `barang_toserba`. Jika input `id` dan `nama` sudah ada di `barang_toserba`, maka penambahan barang tidak dapat dilanjutkan.
+    - Jika data `id` dan `nama` barang belum tersedia di `barang_toserba`, maka dapat melanjutkan untuk melakukan penambahan data barang baru lain nya yang mencakup `stcok`, `harga` , dan `total penjualan`.
+    - Penambahan data baru akan di proses menggunakan method `barang_toserba.append`. Dengan method tersebut, maka input data barang baru dapat ditambahkan ke list dictionary `barang_toserba` di bagian paling bawah.
+    - Setelah memasukan input, akan dilanjutkan dengan input konfirmasi untuk menyimpan data baru atau tidak.
+    - Jika konfirmasi disetujui, maka program akan melakukan print untuk menampilkan semua data `barang_toserba` dan data input barang baru.
+    - Jika konfirmasi tidak disetujui, maka data input yang sudah masuk ke `barang_toserba` dapat dihapus menggunakan method `barang_toserba.pop()` untuk menghapus data baru yang paling bawah pada list dictionary.
+    - Program juga tidak akan menyimpan data baru jika input konfirmasi tidak menggunakan input yang sesuai dari keterangan yang ada (input selain yes dan no).
+
+5.  **Update Data:**
+
         #menu update data
         elif pilih_menu == '3':
             pilihan_menu_3 = input('''
@@ -347,6 +307,23 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
+    - Menu untuk melakuan perubahan pada data barang yang sudah ada di dalam list dictionary toko.
+    - perubahan data barang mencakup nama barang, stock barang, harga barang, dan total penjualan barang.
+    - perubahan hanya bisa dilakukan pada data barang yang sudah tersimpan di dalam list dictionary toko.
+10.  **Hapus Data:**
+    - Menu untuk menghapus data barang yang ada di toko
+11.  Belanja:**
+    - Setiap menu memiliki submenu yang memberikan akses ke berbagai fitur aplikasi.
+    - Setiap submenu berisi logika untuk menangani operasi yang sesuai, seperti menampilkan data, menambahkan, memperbarui, atau menghapus barang, serta melakukan transaksi belanja.
+
+### Fitur dari Program:
+- **Interaktif:** Program menyediakan antarmuka yang interaktif yang memungkinkan pengguna untuk dengan mudah berinteraksi dengan aplikasi melalui terminal.
+- **Manajemen Barang yang Fleksibel:** Pengguna dapat dengan mudah menambahkan, memperbarui, dan menghapus barang dari toko.
+- **Transaksi Belanja yang Mudah:** Program memungkinkan pengguna untuk melakukan transaksi belanja dengan cepat dan efisien, termasuk perhitungan total harga dan kembalian.
+
+            
+
+        
 
         elif (pilih_menu == '4'):
             pilihan_menu_4 = input('''
