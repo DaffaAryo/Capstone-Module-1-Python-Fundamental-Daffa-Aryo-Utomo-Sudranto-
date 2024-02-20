@@ -12,18 +12,18 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
     - Menampilkan semua barang yang tersedia di toko.
     - Mencari barang berdasarkan ID barang.
 2. **Menambah Barang:**
-    - Memungkinkan pengguna untuk menambahkan barang baru ke dalam daftar toko.
+    - Memungkinkan user untuk menambahkan barang baru ke dalam daftar toko.
 3. **Update Barang:**
-    - Mengizinkan pengguna untuk memperbarui data barang yang sudah ada.
+    - Mengizinkan user untuk memperbarui data barang yang sudah ada.
 4. **Menghapus Barang:**
-    - Memungkinkan pengguna untuk menghapus barang dari daftar toko.
+    - Memungkinkan user untuk menghapus barang dari daftar toko.
 5. **Belanja Barang:**
-    - Mengizinkan pengguna untuk memilih barang yang ingin dibeli dan melakukan transaksi pembayaran.
+    - Mengizinkan user untuk memilih barang yang ingin dibeli dan melakukan transaksi pembayaran.
 
 ### Fitur dari Program:
 - **Interaktif:** Program menyediakan antarmuka yang interaktif yang memungkinkan pengguna untuk dengan mudah berinteraksi dengan aplikasi melalui terminal.
 - **Manajemen Barang yang Fleksibel:** Pengguna dapat dengan mudah menambahkan, memperbarui, dan menghapus barang dari toko.
-- **Transaksi Belanja yang Mudah:** Program memungkinkan pengguna untuk melakukan transaksi belanja dengan cepat dan efisien, termasuk perhitungan total harga dan kembalian.
+- **Transaksi Belanja yang Mudah:** Program memungkinkan pengguna untuk melakukan transaksi belanja dengan cepat dan efisien, termasuk perhitungan total harga dan kembalian serta update stock dan total penjualan berdasarkan transaksi yang telah terjadi.
 
 ### Penjelasan Blok Kode:
 1. **Variabel `barang_toserba` dan `keranjang`:**
@@ -489,7 +489,17 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
                 print('\nInput tidak valid!')
                 continue
     - Pada fitur belanja barang, `while` loop digunakan untuk melakukan input `pilih_id_barang` dan `jumlah_barang` secara terus menerus hingga user selesai memilih barang untuk dibeli.
-    - 
+    - `if not barang_ada5` berfungsi jika input pada `pilih_id_barang` tidak terdapat data pada `barang_toserba`, maka user perlu melakukan input kembali dengan `id` yang terdapat pada `barang_toserba`.
+    - `if jumlah_barang > barang['stock']` berfungsi jika input pada `jumlah_barang` lebih besar dari data `stock` pada `baranf_toserba`, maka user perlu melakukan input kembali dengan nilai `stock` yang sesuai dengan `barang_toserba`
+    - jika syarata `id` dan `stock` terpenuhi, user perlu melakukan konfirmasi untuk menambah pilihan belanja kembali atau tidak.
+    - Jika user ingin menambah barang untuk di belanja, maka user akan kembali untuk mengisi inpu `id` dan `stock` kembali.
+    - jika user tidak ingin menambah barang, maka user akan meneruskan proses transaksi belanja dan akan ditampilkan list barang yang akan dibelanjakan dan total biaya yang harus dibayarkan.
+    - seluruh `barang` yang telah di input oleh user akan ditambahkan pada variable `keranjang` dengan menggunakan method `keranjang.append`
+    - `while` loop kembali digunakan untuk melakukan transaksi hingga user memutuskan untuk melakukan pembayaran hingga lunas atau tidak.
+    - `if jumlah_uang == total_harga:` berfungsi jika jumlah uang user sama dengan total harga yang harus dibayarkan. Jika transaksi berhasil data yang terdapat pada `keranjang` akan dihapus.
+    - `elif jumlah_uang > total_harga:` berfungsi jika jumlah uang user lebih besar dari total harga yang harus dibayarkan. Jika transaksi berhasil, program akan menampilkan jumlah kembalian untuk user.
+    - ` elif jumlah_uang < total_harga:` berfungsi jika jumlah uang user lebih kecil dari total harga yang harus dibayarkan. User akan ditampilkan pesan konfirmasi untuk melakukan pembayaran kembali. Jika user memasukan input `yes`, maka user dapat melakukan pembayaran kembali. Jika user memasukan input `no`, maka transaksi gagal dan data `karanjang` dikosongkan.
+    - untuk setiap transaksi yang berhasil dilakukan, program akan melakukan updata data `item` pada `barang_toserba` menggunakan `for` loop. Data `item` yang akan di update adalah `stock` yang akan berkurang dan `total penjualan` yang akan bertambah berdasarkan `barang[jumlah]` yang diinput oleh user.
 
 10. **Exit Program:**
 
@@ -501,6 +511,8 @@ Program ini adalah aplikasi toko sederhana yang memungkinkan pengguna untuk meng
         else:
             print('\nInput tidak valid')
             break
+    - exit program dilakukan dengan mengubah value dari variable `running` dari `True` menjadi `False` sehingga `while` loop tidak dalam kondisi `True` dan program akan berhenti.
+    - Untuk input pada menu utama, selain input 1 - 6, akan diidentifikasikan sebagai input yang tidak valid sehingga user perlu memasukan input yang sesuai.
 
 Dengan demikian, program ini cocok untuk digunakan oleh pengguna yang ingin mempelajari konsep dasar pemrograman Python serta manajemen data sederhana.
 Terima Kasih.
