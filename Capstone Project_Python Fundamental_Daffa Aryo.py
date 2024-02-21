@@ -102,7 +102,7 @@ while running :
                 print('\nInput tidak valid!')
                 continue
             
-            #menu create data2
+        #menu create data
         elif pilih_menu == '2':
             pilihan_menu_2 = input('''
                 \t Menu Menambahkan Barang "TOSERBA PASTI ADA"\n
@@ -155,6 +155,7 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
+
         #menu update data
         elif pilih_menu == '3':
             pilihan_menu_3 = input('''
@@ -210,7 +211,7 @@ while running :
                                 print('\n Input tidak valid!')
 
                             menyimpan_update = input('Apakah ingin menyimpan update? (yes/no)')
-                            if menyimpan_update == 'no': #masih salah
+                            if menyimpan_update == 'no':
                                 barang = copy_barang
                                 for item in barang_toserba:
                                     if item['id'] == barang['id']:
@@ -252,7 +253,7 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
-
+        #menu delete data
         elif (pilih_menu == '4'):
             pilihan_menu_4 = input('''
                 \t Menu Hapus Barang "TOSERBA PASTI ADA"
@@ -305,7 +306,7 @@ while running :
             else:
                 print('\nInput tidak valid!')
                 continue
-
+        #menu Belanja Barang
         elif pilih_menu == '5':
             pilihan_menu_5 = input('''
                 \t Menu Belanja "TOSERBA PASTI ADA"
@@ -368,7 +369,7 @@ while running :
                                 if item['nama'] == barang['nama']:
                                     item['stock'] -= barang['jumlah']
                                     item['total penjualan'] += barang['jumlah']
-                        keranjang.clear()  # Bersihkan keranjang setelah transaksi selesai
+                        keranjang.clear()
                         break
 
                     elif jumlah_uang > total_harga:
@@ -405,6 +406,7 @@ while running :
                 print('\nInput tidak valid!')
                 continue
 
+        #exit Program
         elif pilih_menu == '6':
             print('Terima Kasih, sampai jumpa lagi! :D')
             running = False
